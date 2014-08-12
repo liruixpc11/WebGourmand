@@ -15,4 +15,8 @@ class Book {
     int words
     Date updateDate
     BookState state
+
+    String s() {
+        sprintf("%04d-%s", id, title)
+    }
 }

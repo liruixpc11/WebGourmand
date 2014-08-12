@@ -1,8 +1,11 @@
 package lab.cadl.lirui.webgourmand.core.impl.longteng
 
+import groovy.transform.ToString
+
 /**
  * Created on 2014/8/12.
  */
+@ToString
 class Chapter {
     Book book
     int index
@@ -10,4 +13,8 @@ class Chapter {
     String size
     Date updateDate
     URL downloadUrl
+
+    String s() {
+        sprintf("[%s]%04d-%s", book.s(), index, title)
+    }
 }

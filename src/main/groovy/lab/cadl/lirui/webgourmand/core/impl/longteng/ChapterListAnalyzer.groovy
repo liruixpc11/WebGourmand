@@ -11,6 +11,7 @@ import lab.cadl.lirui.webgourmand.core.impl.Utils
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+import java.nio.file.Path
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
 
@@ -35,13 +36,21 @@ class ChapterListAnalyzer extends AbstractConsumer implements HttpConsumer, Base
                     updateDate: new SimpleDateFormat("yyyy-MM-dd").parse(it.td[3].toString()),
                     downloadUrl: Utils.formatUrl(baseUrl, it.td[4].a.@href.toString())
             )
-            contentFetcher.fetch(chapter.downloadUrl, null, new TextFileSaver(
-                    targetFile: Paths.get(
-                            "longteng",
-                            Utils.filterSpecialPathChar(sprintf("%04d-%s", book.id, book.title)),
-                            Utils.filterSpecialPathChar(sprintf("%04d-%s", chapter.index, chapter.title))
-                    ).toFile()
-            ))
+            File targetFile = Paths.get(
+                    "fiction",
+                    "longteng",
+                    Utils.filterSpecialPathChar(sprintf("%04d-%s", book.id, book.title)),
+                    Utils.filterSpecialPathChar(sprintf("%04d-%s.txt", chapter.index, chapter.title))
+            ).toFile()
+
+            if (!targetFile.exists()) {
+                logger.info("begin download chapter {}", chapter.s())
+                contentFetcher.fetch(chapter.downloadUrl, null, new TextFileSaver(
+                        targetFile: targetFile
+                ))
+            } else {
+                logger.info("ignore chapter {} because of exists", chapter.s())
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 /**
  * Created on 2014/8/12.
@@ -21,6 +22,8 @@ class TextFileSaver extends AbstractConsumer implements StreamConsumer, BaseUrlA
     void consume(InputStream inputStream) {
         logger.info("save {} to {}", baseUrl, targetFile)
         Files.createDirectories(targetFile.toPath().parent)
-        targetFile.withOutputStream { it << inputStream }
+        File tmpFile = new File(targetFile.toString() + ".download")
+        tmpFile.withOutputStream { it << inputStream }
+        Files.move(tmpFile.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
 }
