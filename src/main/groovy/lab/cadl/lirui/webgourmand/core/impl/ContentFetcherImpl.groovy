@@ -114,6 +114,9 @@ class ContentFetcherImpl implements ContentFetcher {
                     }
 
                     done = true
+                } catch (FileNotFoundException ex) {
+                    logger.error("request {} failed: {}", url, ex)
+                    break
                 } catch (IOException ex) {
                     logger.warn("request {} failed because of network[{}], try again", url, ex)
                     // wait [0, 10]s

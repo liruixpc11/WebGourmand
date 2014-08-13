@@ -38,7 +38,7 @@ class BookListAnalyzer extends AbstractConsumer implements HttpConsumer, BaseUrl
 
         String nextUrl = root.'**'.find { it.@class == 'next' && it.@href }?.@href
         if (nextUrl) {
-//            contentFetcher.fetch(formatUrl(nextUrl), null, HttpOptions.gbk(), this)
+            contentFetcher.fetch(formatUrl(nextUrl), null, HttpOptions.gbk(), this)
         }
     }
 
