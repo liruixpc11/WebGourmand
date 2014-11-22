@@ -5,7 +5,7 @@ import java.nio.charset.Charset
 /**
  * Created on 2014/8/12.
  */
-class TextOptions {
+class TextOptions <T extends TextOptions> extends CommonOptions<T> {
     Charset encoding
 
     static TextOptions gbk() {

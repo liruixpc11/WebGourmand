@@ -1,4 +1,4 @@
-package lab.cadl.lirui.webgourmand.core.impl.longteng
+package lab.cadl.lirui.webgourmand.core.impl.common
 
 import groovy.transform.ToString
 
@@ -9,6 +9,7 @@ import groovy.transform.ToString
 class Book {
     int id
     String title
+    String section
     String url
     String author
     String lastChapterTitle

@@ -5,8 +5,10 @@ package lab.cadl.lirui.webgourmand.core
  */
 public interface ContentFetcher {
     void shutdown()
-    void setProxy(String host, int port, String scheme)
+    ContentFetcher drive(Driver driver)
+    ContentFetcher setProxy(String host, int port, String scheme)
     void fetch(URL url, String tag, HttpOptions options, HttpConsumer consumer)
     void fetch(URL url, String tag, TextOptions options, TextConsumer consumer)
     void fetch(URL url, String tag, StreamConsumer consumer)
+    void fetch(URL url, String tag, CommonOptions options, StreamConsumer consumer)
 }

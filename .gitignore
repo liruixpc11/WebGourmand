@@ -9,3 +9,6 @@
 *.log
 build/
 /fiction/
+/pictures/
+/sounds/
+/bits/

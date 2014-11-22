@@ -1,4 +1,4 @@
-package lab.cadl.lirui.webgourmand.core.impl.longteng
+package lab.cadl.lirui.webgourmand.core.impl.common
 
 /**
  * Created on 2014/8/12.

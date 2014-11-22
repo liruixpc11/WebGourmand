@@ -4,14 +4,13 @@ import groovy.util.slurpersupport.GPathResult
 import lab.cadl.lirui.webgourmand.core.AbstractConsumer
 import lab.cadl.lirui.webgourmand.core.BaseUrlAware
 import lab.cadl.lirui.webgourmand.core.HttpConsumer
-import lab.cadl.lirui.webgourmand.core.TextConsumer
-import lab.cadl.lirui.webgourmand.core.impl.AbstractErrorHandler
-import lab.cadl.lirui.webgourmand.core.impl.TextFileSaver
+import lab.cadl.lirui.webgourmand.core.impl.FileSaver
 import lab.cadl.lirui.webgourmand.core.impl.Utils
+import lab.cadl.lirui.webgourmand.core.impl.common.Book
+import lab.cadl.lirui.webgourmand.core.impl.common.Chapter
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-import java.nio.file.Path
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
 
@@ -31,7 +30,7 @@ class ChapterListAnalyzer extends AbstractConsumer implements HttpConsumer, Base
             Chapter chapter = new Chapter(
                     book: book,
                     index: Integer.parseInt(it.td[0].toString()),
-                    title: it.td[1].toString(),
+                    title: it.td[1].toString().trim(),
                     size: it.td[2].toString(),
                     updateDate: new SimpleDateFormat("yyyy-MM-dd").parse(it.td[3].toString()),
                     downloadUrl: Utils.formatUrl(baseUrl, it.td[4].a.@href.toString())
@@ -45,7 +44,7 @@ class ChapterListAnalyzer extends AbstractConsumer implements HttpConsumer, Base
 
             if (!targetFile.exists()) {
                 logger.info("begin download chapter {}", chapter.s())
-                contentFetcher.fetch(chapter.downloadUrl, null, new TextFileSaver(
+                contentFetcher.fetch(chapter.downloadUrl, null, new FileSaver(
                         targetFile: targetFile
                 ))
             } else {

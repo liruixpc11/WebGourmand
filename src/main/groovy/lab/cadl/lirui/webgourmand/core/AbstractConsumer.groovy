@@ -7,4 +7,9 @@ import lab.cadl.lirui.webgourmand.core.impl.AbstractErrorHandler
  */
 abstract class AbstractConsumer <R> extends AbstractErrorHandler implements BaseConsumer<R> {
     ContentFetcher contentFetcher
+
+    @Override
+    boolean preRequest() {
+        true
+    }
 }

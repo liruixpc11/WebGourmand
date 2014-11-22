@@ -3,12 +3,10 @@ package lab.cadl.lirui.webgourmand.core.impl.longteng
 import groovy.util.slurpersupport.GPathResult
 import lab.cadl.lirui.webgourmand.core.AbstractConsumer
 import lab.cadl.lirui.webgourmand.core.BaseUrlAware
-import lab.cadl.lirui.webgourmand.core.Engine
 import lab.cadl.lirui.webgourmand.core.HttpConsumer
 import lab.cadl.lirui.webgourmand.core.HttpOptions
-import lab.cadl.lirui.webgourmand.core.TextConsumer
-import lab.cadl.lirui.webgourmand.core.impl.AbstractErrorHandler
 import lab.cadl.lirui.webgourmand.core.impl.Utils
+import lab.cadl.lirui.webgourmand.core.impl.common.Book
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 

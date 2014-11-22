@@ -12,11 +12,17 @@ import java.nio.file.StandardCopyOption
 /**
  * Created on 2014/8/12.
  */
-class TextFileSaver extends AbstractConsumer implements StreamConsumer, BaseUrlAware {
-    private static final Logger logger = LoggerFactory.getLogger(TextFileSaver)
+class FileSaver extends AbstractConsumer implements StreamConsumer, BaseUrlAware {
+    private static final Logger logger = LoggerFactory.getLogger(FileSaver)
 
     URL baseUrl
     File targetFile
+    boolean overwrite = false
+
+    @Override
+    boolean preRequest() {
+        return overwrite || !targetFile.exists()
+    }
 
     @Override
     void consume(InputStream inputStream) {

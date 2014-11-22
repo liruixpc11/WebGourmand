@@ -6,6 +6,8 @@ import lab.cadl.lirui.webgourmand.core.BaseUrlAware
 import lab.cadl.lirui.webgourmand.core.HttpConsumer
 import lab.cadl.lirui.webgourmand.core.HttpOptions
 import lab.cadl.lirui.webgourmand.core.impl.Utils
+import lab.cadl.lirui.webgourmand.core.impl.common.Book
+import lab.cadl.lirui.webgourmand.core.impl.common.BookState
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -23,7 +25,7 @@ class BookListAnalyzer extends AbstractConsumer implements HttpConsumer, BaseUrl
         logger.info("analyze book list [{}]", baseUrl)
         root.'**'.find { it.@id == 'lbox' }.ul.each {
             def book = new Book(
-                    title: it.li[0].toString(),
+                    title: it.li[0].toString().trim(),
                     url: it.li[0].a.@href.toString(),
                     author: it.li[1].toString(),
                     lastChapterTitle: it.li[2].toString(),
