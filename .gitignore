@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .idea
 /gradle/
 /gradlew
@@ -13,7 +12,7 @@ build/
 /pictures/
 /sounds/
 /bits/
-=======
+
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -26,4 +25,3 @@ build/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
->>>>>>> a16422680cd9e504d842b59e4f39bdf39109361b
