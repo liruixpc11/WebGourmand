@@ -1,4 +1,4 @@
-package lab.cadl.lirui.webgourmand.core.impl.tools
+package lab.cadl.lirui.webgourmand.tools.txt
 
 import java.nio.charset.StandardCharsets
 

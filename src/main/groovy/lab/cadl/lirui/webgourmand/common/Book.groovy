@@ -1,4 +1,4 @@
-package lab.cadl.lirui.webgourmand.core.impl.common
+package lab.cadl.lirui.webgourmand.common
 
 import groovy.transform.ToString
 
