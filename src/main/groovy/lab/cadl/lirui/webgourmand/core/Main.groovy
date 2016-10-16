@@ -9,6 +9,7 @@ import lab.cadl.lirui.webgourmand.core.impl.longteng.LongtengDriver
 import lab.cadl.lirui.webgourmand.core.impl.longtengnet.LongtengnetModule
 import lab.cadl.lirui.webgourmand.core.impl.longtengnet.LongtengnetSoundModule
 import lab.cadl.lirui.webgourmand.core.impl.se94se.Se94seDriver
+import lab.cadl.lirui.webgourmand.core.impl.sex8.Sex8Module
 import lab.cadl.lirui.webgourmand.core.impl.sis001.Sis001Module
 
 /**
@@ -16,6 +17,6 @@ import lab.cadl.lirui.webgourmand.core.impl.sis001.Sis001Module
  */
 class Main {
     static void main(String[] args) {
-        new ContentFetcherImpl(ContentFetcherImpl.FetchMode.Performance).drive(new AvOnlineBitModule()).shutdown()
+        new ContentFetcherImpl(ContentFetcherImpl.FetchMode.Performance).drive(new Sex8Module()).shutdown()
     }
 }
